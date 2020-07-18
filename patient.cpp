@@ -81,24 +81,24 @@ class patient{
 
         void display_details(){ //displays the details of the patient
             cout<<endl;
-            cout<<"Patient Number #"<<id<<endl;
-            cout<<"Patient's name : "<<name<<endl;
+            cout<<"Patient number #"<<id<<endl;
+            cout<<"Name of patient : "<<name<<endl;
             cout<<"Address : "<<address<<endl;
             cout<<"Age : "<<age<<endl;
-            cout<<"Arrival Date : "<<arrival_date<<endl;
+            cout<<"Arrival date : "<<arrival_date<<endl;
             cout<<"Coming from : "<<source<<endl;
             cout<<"Going to : "<<destination<<endl;
-            cout<<"Discharged Date : "<<discharged_date<<endl;
+            cout<<"Discharged date : "<<discharged_date<<endl;
             if(room_allotted){
-                cout<<"Allotted Room no. : "<<room_serial_no<<endl;
+                cout<<"Allotted room no. : "<<room_serial_no<<endl;
                 cout<<"Floor no. : "<<floor_no<<endl;
             }
             cout<<endl<<endl;
         }
 
         void input_details(){ //takes input from the user for the details of the patient
-            cout<<"Patient Number #"<<id<<endl;
-            cout<<"Please input the Patient details"<<endl;
+            cout<<"Patient number #"<<id<<endl;
+            cout<<"Please input details of the patient"<<endl;
             cout<<"Name"<<endl;
             getline(cin >> ws, name);
             cout<<"Address"<<endl;
@@ -122,7 +122,7 @@ class patient{
             return room_serial_no;
         }
 
-        void modify_room_no(int value){ //modifies the room number, floor number and room_allotted according to the passed value
+        void modify_room_no(int value){ //modifies the room number, floor number and room_allotted according to the given value
             if(value == -1){
                 room_allotted = false;
                 room_serial_no = -1;
@@ -154,7 +154,7 @@ class patient{
             floor_no = value;
         }
 
-        void modify_discharged_date(bool a = false){ //modifies the discharge date to either none or the current time depending on the passed value
+        void modify_discharged_date(bool a = false){ //modifies the discharge date to either none or the current time depending on the given value
             if(a)
                 discharged_date = "none";
             else
@@ -173,7 +173,7 @@ class patient{
             return age;
         }
 
-        bool get_empty(){ //returns false if the patient's details haven't been filled yet (used as a failsafe)
+        bool get_empty(){ //returns false if the patient's details haven't been filled upto this time(used as a failsafe)
             return empty;
         }
 
