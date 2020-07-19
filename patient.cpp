@@ -6,7 +6,7 @@ class patient{
         string arrival_date;
         string source;
         string destination;
-        int room_serial_no;
+        int serial_room_no;
         int room_no;
         string discharged_date;
         int floor_no;
@@ -14,7 +14,7 @@ class patient{
         bool empty;
         bool room_allotted;
 
-    string random_string(size_t length){ //generates a random string of size length
+    string random_string(size_t length){ //generates a random string of t size length
         auto randchar = []() -> char
         {
             const char charset[] =
@@ -29,7 +29,7 @@ class patient{
         return str;
     }
 
-    int random_number(int low, int high){ //generates a random number bw a given range
+    int random_number(int low, int high){ //generates a random number between a given range
         return low + (rand() % high);
     }
 
@@ -47,7 +47,7 @@ class patient{
 
     public:
         patient(int i, bool value=false){  
-            if(value){ //used for generating random entries for testing
+            if(value){ //used to generate random entries for testing
                 name = random_string(10);
                 address = random_string(15);
                 age = random_number(12,70);
@@ -57,7 +57,7 @@ class patient{
                 empty = false;
                 room_allotted = false;
                 discharged_date = "none";
-                room_serial_no = -1;
+                serial_room_no = -1;
                 room_no = -1;
                 floor_no = -1;
             }
@@ -69,7 +69,7 @@ class patient{
                 arrival_date = convert_date_to_string();
                 source = "none";
                 destination = "none";
-                room_serial_no = -1;
+                serial_room_no = -1;
                 room_no = -1;
                 discharged_date = "none";
                 floor_no = -1;
@@ -79,9 +79,9 @@ class patient{
             id = i+1;
         }
 
-        void display_details(){ //displays the details of the patient
+        void display_details(){ //the details of the patient is displayed
             cout<<endl;
-            cout<<"Patient Number #"<<id<<endl;
+            cout<<"Patient's Number #"<<id<<endl;
             cout<<"Patient's name : "<<name<<endl;
             cout<<"Address : "<<address<<endl;
             cout<<"Age : "<<age<<endl;
@@ -90,8 +90,8 @@ class patient{
             cout<<"Going to : "<<destination<<endl;
             cout<<"Discharged Date : "<<discharged_date<<endl;
             if(room_allotted){
-                cout<<"Allotted Room no. : "<<room_serial_no<<endl;
-                cout<<"Floor no. : "<<floor_no<<endl;
+                cout<<"Allotted Room number : "<<serial_room_no<<endl;
+                cout<<"Floor number : "<<floor_no<<endl;
             }
             cout<<endl<<endl;
         }
@@ -99,15 +99,15 @@ class patient{
         void input_details(){ //takes input from the user for the details of the patient
             cout<<"Patient Number #"<<id<<endl;
             cout<<"Please input the Patient details"<<endl;
-            cout<<"Name"<<endl;
+            cout<<"Name :"<<endl;
             getline(cin >> ws, name);
-            cout<<"Address"<<endl;
+            cout<<"Addres :s"<<endl;
             getline(cin >> ws, address);
-            cout<<"Age"<<endl;
+            cout<<"Age :"<<endl;
             cin>>age;
-            cout<<"Coming from"<<endl;
+            cout<<"Coming from :"<<endl;
             getline(cin >> ws, source);
-            cout<<"Going to"<<endl;
+            cout<<"Going to :"<<endl;
             getline (cin >> ws, destination);
 
             empty = false;
@@ -118,14 +118,14 @@ class patient{
             return room_no;
         }
 
-        int get_room_serial_no(){ //returns the serial room no of the patient
-            return room_serial_no;
+        int get_serial_room_no(){ //returns serial room no of the patient
+            return serial_room_no;
         }
 
-        void modify_room_no(int value){ //modifies the room number, floor number and room_allotted according to the passed value
+        void modify_room_no(int value){ //modifies the room number, floor number and room_allotted according to the given value
             if(value == -1){
                 room_allotted = false;
-                room_serial_no = -1;
+                serial_room_no = -1;
                 room_no = -1;
             }
             else{
@@ -133,24 +133,24 @@ class patient{
                 room_no = value;
                 if(value <= GROUND_ROOMS){
                     floor_no = 0;
-                    room_serial_no = room_no;
+                    serial_room_no = room_no;
                 }
                 else if(value > GROUND_ROOMS && value <= GROUND_ROOMS + FIRST_ROOMS){
                     floor_no = 1;
-                    room_serial_no = room_no - GROUND_ROOMS;
+                    serial_room_no = room_no - GROUND_ROOMS;
                 }
                 else{
                     floor_no = 2;
-                    room_serial_no = room_no - GROUND_ROOMS - FIRST_ROOMS;
+                    serial_room_no = room_no - GROUND_ROOMS - FIRST_ROOMS;
                 }
             }
         }
 
-        int get_floor_no(){ //returns the floor number of the patient
+        int get_floor_no(){ //returns floor number of the patient
             return floor_no;
         }
 
-        void modify_floor_no(int value){ //modifies the floor number of the patient
+        void modify_floor_no(int value){ //modifies floor number of the patient
             floor_no = value;
         }
 
@@ -165,11 +165,11 @@ class patient{
             return discharged_date;
         }
 
-        bool get_room_allotted(){ //returns true if the patient has been allotted a room, otherwise false
+        bool get_room_allotted(){ //returns true if the patient has been allotted a room, otherwise returns false
             return room_allotted;
         }
 
-        int get_age(){ //returns the age of the patient
+        int get_age(){ //returns age of the patient
             return age;
         }
 
@@ -177,11 +177,11 @@ class patient{
             return empty;
         }
 
-        int get_id(){ //returns the id of the patient
+        int get_id(){ //returns id of the patient
             return id;
         }
 
-        string get_patient_name(){ //returns the name of the patient
+        string get_patient_name(){ //returns name of the patient
             return name;
         }
 
